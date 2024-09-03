@@ -184,6 +184,16 @@ export const options: NextAdminOptions = {
           "author",
           "rate",
         ],
+        hooks: {
+          async beforeDb(data, mode, request) {
+            console.log("intercept beforedb", data, mode, request);
+
+            return data;
+          },
+          async afterDb(response, mode) {
+            console.log("intercept afterdb", response, mode);
+          },
+        },
       },
     },
     Category: {
